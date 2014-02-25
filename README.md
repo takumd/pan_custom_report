@@ -25,14 +25,14 @@ with `--vsys`, you can specify target vsys, if omitted, shared config is used fo
 
 ## example
 
-* show/get
+#### show/get
 get:   candidate config
     $ ruby pan_report.rb  -d 1.2.3.4 -u admin -p admin -a get
 show:  running config
     $ ruby pan_report.rb  -d 1.2.3.4 -u admin -p admin -a show
 
-* save current report config by redirecting output to file
+#### save current report config by redirecting output to file
     $ ruby pan_report.rb  -d 10.128.50.207 -u admin -p admin -a show -c password > test.xml
 
-* load exported report_config to specified vsys
+#### load exported report_config to specified vsys
     $ ruby pan_report.rb  -d 10.128.50.207 -u admin -p admin -a set -c password -f test.xml --vsys vsys2
