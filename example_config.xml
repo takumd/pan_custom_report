@@ -1,0 +1,444 @@
+<reports>
+  <entry name="Virus and Spyware brief">
+    <query>(subtype eq spyware) or (subtype eq virus)</query>
+    <type>
+      <threat>
+        <group-by>subtype</group-by>
+        <aggregate-by>
+          <member>app</member>
+          <member>threatid</member>
+          <member>severity</member>
+        </aggregate-by>
+        <values>
+          <member>repeatcnt</member>
+        </values>
+      </threat>
+    </type>
+    <period>last-30-days</period>
+    <topn>100</topn>
+    <topm>25</topm>
+    <caption>Virus and Spyware brief</caption>
+  </entry>
+  <entry name="Vulnerability brief">
+    <type>
+      <threat>
+        <sortby>repeatcnt</sortby>
+        <group-by>threatid</group-by>
+        <aggregate-by>
+          <member>app</member>
+          <member>severity</member>
+        </aggregate-by>
+        <values>
+          <member>repeatcnt</member>
+        </values>
+      </threat>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <caption>Vulnerability brief</caption>
+    <query>(subtype eq vulnerability) and (severity geq medium)</query>
+    <topm>50</topm>
+  </entry>
+  <entry name="Flood and Scan">
+    <type>
+      <threat>
+        <aggregate-by>
+          <member>threatid</member>
+          <member>severity</member>
+        </aggregate-by>
+        <values>
+          <member>repeatcnt</member>
+        </values>
+      </threat>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <caption>Flood and Scan</caption>
+    <query>(subtype eq flood) or (subtype eq scan)</query>
+    <topm>10</topm>
+  </entry>
+  <entry name="App Tunneling">
+    <type>
+      <trsum>
+        <sortby>sessions</sortby>
+        <aggregate-by>
+          <member>app</member>
+          <member>risk-of-app</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(subcategory-of-app eq encrypted-tunnel)</query>
+    <caption>App Tunneling</caption>
+  </entry>
+  <entry name="App Remote Access">
+    <type>
+      <trsum>
+        <sortby>sessions</sortby>
+        <aggregate-by>
+          <member>app</member>
+          <member>risk-of-app</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(subcategory-of-app eq remote-access)</query>
+    <caption>App Remote Access</caption>
+  </entry>
+  <entry name="App Proxy">
+    <type>
+      <trsum>
+        <sortby>bytes</sortby>
+        <aggregate-by>
+          <member>app</member>
+          <member>risk-of-app</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(subcategory-of-app eq proxy)</query>
+    <caption>App Proxy</caption>
+  </entry>
+  <entry name="App Storage">
+    <type>
+      <trsum>
+        <sortby>bytes</sortby>
+        <aggregate-by>
+          <member>app</member>
+          <member>risk-of-app</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(subcategory-of-app eq storage-backup)</query>
+    <caption>App Storage</caption>
+  </entry>
+  <entry name="App Mail">
+    <type>
+      <trsum>
+        <sortby>bytes</sortby>
+        <aggregate-by>
+          <member>app</member>
+          <member>risk-of-app</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(subcategory-of-app eq email)</query>
+    <caption>App Mail</caption>
+  </entry>
+  <entry name="App Movie">
+    <type>
+      <trsum>
+        <sortby>bytes</sortby>
+        <aggregate-by>
+          <member>app</member>
+          <member>risk-of-app</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(subcategory-of-app eq photo-video)</query>
+    <caption>App Movie</caption>
+  </entry>
+  <entry name="App Audio">
+    <type>
+      <trsum>
+        <sortby>bytes</sortby>
+        <aggregate-by>
+          <member>app</member>
+          <member>risk-of-app</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(subcategory-of-app eq audio-streaming)</query>
+    <caption>App Audio</caption>
+  </entry>
+  <entry name="App Game">
+    <type>
+      <trsum>
+        <sortby>bytes</sortby>
+        <aggregate-by>
+          <member>app</member>
+          <member>risk-of-app</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(subcategory-of-app eq gaming)</query>
+    <caption>App Game</caption>
+  </entry>
+  <entry name="App Business App">
+    <type>
+      <trsum>
+        <sortby>bytes</sortby>
+        <aggregate-by>
+          <member>app</member>
+          <member>risk-of-app</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(subcategory-of-app eq erp-crm)</query>
+    <caption>App Business App</caption>
+  </entry>
+  <entry name="App SNS">
+    <type>
+      <trsum>
+        <sortby>bytes</sortby>
+        <aggregate-by>
+          <member>app</member>
+          <member>risk-of-app</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(subcategory-of-app eq social-networking)</query>
+    <caption>App SNS</caption>
+  </entry>
+  <entry name="App IM and P2P">
+    <type>
+      <trsum>
+        <sortby>sessions</sortby>
+        <aggregate-by>
+          <member>app</member>
+          <member>risk-of-app</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(subcategory-of-app eq instant-messaging) or (technology-of-app eq peer-to-peer)</query>
+    <caption>App IM and P2P</caption>
+  </entry>
+  <entry name="App File Sharing">
+    <type>
+      <trsum>
+        <sortby>sessions</sortby>
+        <aggregate-by>
+          <member>app</member>
+          <member>risk-of-app</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(subcategory-of-app eq file-sharing)</query>
+    <caption>App File Sharing</caption>
+  </entry>
+  <entry name="URL suspicious category">
+    <type>
+      <url>
+        <sortby>repeatcnt</sortby>
+        <group-by>app</group-by>
+        <aggregate-by>
+          <member>category</member>
+        </aggregate-by>
+        <values>
+          <member>repeatcnt</member>
+        </values>
+      </url>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>50</topm>
+    <query>(category eq bot-nets) or (category eq confirmed-spam-sources) or (category eq hacking) or (category eq keyloggers-and-monitoring) or (category eq malware-sites) or (category eq open-http-proxies) or (category eq peer-to-peer) or (category eq phishing-and-other-frauds) or (category eq proxy-avoidance-and-anonymizers) or (category eq spam-urls) or (category eq spyware-and-adware) or (category eq unconfirmed-spam-sources)</query>
+    <caption>URL suspicious category</caption>
+  </entry>
+  <entry name="URL categories of SSL">
+    <type>
+      <url>
+        <sortby>repeatcnt</sortby>
+        <aggregate-by>
+          <member>category</member>
+          <member>app</member>
+        </aggregate-by>
+        <values>
+          <member>repeatcnt</member>
+        </values>
+      </url>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>50</topm>
+    <query>(app eq ssl)</query>
+    <caption>URL categories of SSL</caption>
+  </entry>
+  <entry name="Unknown TCP and UDP">
+    <type>
+      <trsum>
+        <group-by>app</group-by>
+        <aggregate-by>
+          <member>src</member>
+          <member>dst</member>
+        </aggregate-by>
+        <values>
+          <member>sessions</member>
+          <member>bytes</member>
+        </values>
+      </trsum>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>10</topm>
+    <query>(app eq unknown-tcp) or (app eq unknown-udp)</query>
+    <caption>Unknown TCP and UDP</caption>
+  </entry>
+  <entry name="Vulnerability detail">
+    <type>
+      <threat>
+        <sortby>repeatcnt</sortby>
+        <group-by>direction</group-by>
+        <aggregate-by>
+          <member>threatid</member>
+          <member>app</member>
+          <member>severity</member>
+          <member>src</member>
+          <member>dst</member>
+          <member>dport</member>
+        </aggregate-by>
+        <values>
+          <member>repeatcnt</member>
+        </values>
+      </threat>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>25</topm>
+    <caption>Vulnerability detail</caption>
+    <query>(subtype eq vulnerability) and (severity geq medium)</query>
+  </entry>
+  <entry name="Virus and Spyware detail">
+    <caption>Virus and Spyware detail</caption>
+    <query>(subtype eq virus) or (subtype eq spyware)</query>
+    <type>
+      <threat>
+        <sortby>repeatcnt</sortby>
+        <group-by>subtype</group-by>
+        <aggregate-by>
+          <member>threatid</member>
+          <member>app</member>
+          <member>severity</member>
+          <member>src</member>
+          <member>dst</member>
+          <member>dport</member>
+        </aggregate-by>
+        <values>
+          <member>repeatcnt</member>
+        </values>
+      </threat>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>25</topm>
+  </entry>
+  <entry name="App High  Risk">
+    <type>
+      <appstat>
+        <sortby>nbytes</sortby>
+        <aggregate-by>
+          <member>name</member>
+          <member>risk-of-name</member>
+        </aggregate-by>
+        <values>
+          <member>nbytes</member>
+          <member>nsess</member>
+        </values>
+      </appstat>
+    </type>
+    <period>last-30-days</period>
+    <topn>100</topn>
+    <topm>10</topm>
+    <caption>App High  Risk</caption>
+    <query>(risk-of-name eq 4) or (risk-of-name eq 5)</query>
+  </entry>
+  <entry name="Filetype">
+    <type>
+      <data>
+        <group-by>app</group-by>
+        <aggregate-by>
+          <member>threatid</member>
+          <member>direction</member>
+        </aggregate-by>
+        <values>
+          <member>repeatcnt</member>
+        </values>
+      </data>
+    </type>
+    <period>last-30-days</period>
+    <topn>500</topn>
+    <topm>50</topm>
+    <caption>Filetype</caption>
+  </entry>
+</reports>

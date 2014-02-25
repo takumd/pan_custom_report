@@ -3,6 +3,8 @@ pan_custom_report
 
 export and import custom report across devices and virtual systems.
 
+How to use
+=================
   Usage: pan_report [options]
       -h, --help                       Display this screen
       -a 'get|show|set|delete',        action
@@ -20,3 +22,13 @@ export and import custom report across devices and virtual systems.
 
 specify cache file of API_KEY with `-c`(use pre-generated api_key)
 with `--vsys`, you can specify target vsys, if omitted, shared config is used for target.
+
+## show/get custom report setting of device 1.2.3.4 with user/password = admin/admin
+    $ ruby pan_report.rb  -d 1.2.3.4 -u admin -p admin -a show
+    $ ruby pan_report.rb  -d 1.2.3.4 -u admin -p admin -a get
+
+## save current report config by redirecting output to file
+    $ ruby pan_report.rb  -d 10.128.50.207 -u admin -p admin -a show -c password > test.xml
+
+## load exported report_config to specified vsys
+    $ ruby pan_report.rb  -d 10.128.50.207 -u admin -p admin -a set -c password -f test.xml --vsys vsys2
