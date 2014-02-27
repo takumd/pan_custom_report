@@ -1,4 +1,3 @@
-<reports>
   <entry name="Virus and Spyware brief">
     <query>(subtype eq spyware) or (subtype eq virus)</query>
     <type>
@@ -441,4 +440,3 @@
     <topm>50</topm>
     <caption>Filetype</caption>
   </entry>
-</reports>

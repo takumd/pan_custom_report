@@ -21,18 +21,17 @@ How to use
       show:  running config
 
 specify cache file of API_KEY with `-c`(use pre-generated api_key)
-with `--vsys`, you can specify target vsys, if omitted, shared config is used for target.
+with `--vsys`, you can specify target vsys, if omitted, `Shared` is used for target.
 
 ## example
 
-#### show/get
-get:   candidate config
-    $ ruby pan_report.rb  -d 1.2.3.4 -u admin -p admin -a get
-show:  running config
-    $ ruby pan_report.rb  -d 1.2.3.4 -u admin -p admin -a show
+#### retrieve custom report config as xml
+get( candidate config )
 
-#### save current report config by redirecting output to file
-    $ ruby pan_report.rb  -d 10.128.50.207 -u admin -p admin -a show -c password > test.xml
+    $ ruby pan_report.rb  -d 1.2.3.4 -u admin -p admin -a get > report.xml
 
-#### load exported report_config to specified vsys
-    $ ruby pan_report.rb  -d 10.128.50.207 -u admin -p admin -a set -c password -f test.xml --vsys vsys2
+show( running config )
+    $ ruby pan_report.rb  -d 1.2.3.4 -u admin -p admin -a show > report.xml
+
+#### load saved report_config to vsys2
+    $ ruby pan_report.rb  -d 1.2.3.4 -a set -c password -f report.xml --vsys vsys2
